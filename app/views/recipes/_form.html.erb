@@ -1,3 +1,35 @@
+
+
 <%= form_for @recipe do |f| %>
-  Title: <%= f.text_field :title %>
+    <%= f.label :name %>
+    <%= f.text_field :title %>
+    <br />
+
+    <%= f.fields_for :ingredients do |addr| %>
+        <%= addr.label :name %>
+        <%= addr.text_field :name %>
+        <br />
+
+        <%= addr.label :quantity %>
+        <%= addr.text_field :quantity %>
+        <br />
+
+        <!-- < addr.label :recipe_id %> -->
+        <!-- < addr.text_field :recipe_id %><br> -->
+
+    <% end %>
+
+    <%= f.submit %>
 <% end %>
+
+
+
+# create_table "ingredients", force: :cascade do |t|
+#   t.string   "name"
+#   t.string   "quantity"
+#   t.integer  "recipe_id"
+# end
+#
+# create_table "recipes", force: :cascade do |t|
+#   t.string   "title"
+# end
